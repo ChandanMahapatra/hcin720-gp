@@ -1,0 +1,13 @@
+#inputs{
+               width:45%;
+               float:left;
+           }
+
+#zones{
+               width:45%;
+               float:right;
+}
+
+#buttons {
+	clear: both;
+}
