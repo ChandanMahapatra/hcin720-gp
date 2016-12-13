@@ -16,7 +16,7 @@ This device is an ambient display that can help people to remember to go to the 
 It projects an image that resembles a genre for a movie that is coming up next (within 20mins).
 A neopixel is attached to the photon for the projection.The reel has been rastered for the image projection. We have used a servo for rotating the reel to the genre of the movie.
 
-Particle Community - link: https://youtu.be/ORBxlh0m8RY 
+Video link: https://youtu.be/ORBxlh0m8RY 
 
 #### 3D Printing
 The cylinder used for projection has been 3D printed.
