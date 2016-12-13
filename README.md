@@ -6,7 +6,7 @@
 
 ### The ambient display
 
-This device is an ambient display that can help people to remember to go to the theatres more often. It projects an image thats resembles a genre so that they might be interested on going to the theatre after looking at the image.
+This device is an ambient display that can help people to remember to go to the theatres more often. It projects an image thats resembles a genre so that they might be interested on going to the theatre after looking at the image. We wanted the design to look like a toy projector (viewfinder) and the green one-eyed monster from Monster Inc. The reason for this was, we wanted our device to be approachable and fun for everyone in the house
 
 ![2](https://cloud.githubusercontent.com/assets/14539609/21150796/4b256638-c12e-11e6-9f45-5b01e7fa9350.jpg)
 
