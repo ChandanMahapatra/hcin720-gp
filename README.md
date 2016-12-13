@@ -25,7 +25,7 @@ The cylinder used for projection has been 3D printed.
 The design of the entire box, the reel for projection has been done using laser cutting.
 
 #### Fabric
-Fabric is used at the main display on which the movie genre is projected.
+Fabric is used as the main display and the movie genre is projected on it.
 
 Libraries and other resources:
 
