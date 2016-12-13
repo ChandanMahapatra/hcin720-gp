@@ -1,5 +1,3 @@
-/* UI */
-
 var k=0;
 
            //*****FUNCTION TO GET THE INTIAL INPUT FROM THE USER AND BUILD THE MENUS BASED ON THE NUMBER SPEIFIED********//
@@ -142,7 +140,7 @@ var arrayLength = timeZone.length;
 var allTime = [];
 
 
-//setInterval(function(){
+setInterval(function(){
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         // Typical action to be performed when the document is ready:
@@ -164,6 +162,11 @@ xhttp.onreadystatechange = function() {
         document.getElementById("localTime").innerHTML = "Local time: " + formattedLocalTime;
         document.getElementById("cityTime").innerHTML = "The time in the selected Cities: ";
         var ul = document.getElementById("listTime");
+        //ul.removeChild(li);
+        var node = document.getElementById('listTime');
+        while(node.firstChild){
+            node.removeChild(node.firstChild);
+        }
         for(var i =0;i<arrayLength;i++)
         {
             for(var j =0;j<424;j++)
@@ -211,7 +214,7 @@ xhttp.onreadystatechange = function() {
 xhttp.open("GET", dataURL, true);
 xhttp.send();
 
-//}, 1000);
+}, 2000);
 
 
 function collabTime(calcTime, localTime)
@@ -330,7 +333,7 @@ function collabTime(calcTime, localTime)
 
 
                     for(var j=0; j< myArr.length; j++){
-//                            console.log(myArr[i].countryName);
+                        //console.log(myArr[i].countryName);
                         var options = document.createElement("option");
                         var text = document.createTextNode(myArr[j].countryName);
                         options.appendChild(text);
