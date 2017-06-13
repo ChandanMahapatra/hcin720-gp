@@ -26,7 +26,7 @@ Video link: https://youtu.be/ORBxlh0m8RY
 A cylinder used for projection. This cylinder was 3D printed to make sure the Neopixel fit inside it.
 
 #### Laser Cutting
-The design of the entire box and the reel for projection has been done with t he help oflaser cutter.
+The design of the entire box and the reel for projection has been done with the help of the laser cutter.
 
 #### Fabric
 Fabric is used as the main display and the movie genre is projected on it.
