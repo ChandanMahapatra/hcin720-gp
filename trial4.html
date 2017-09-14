@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ 
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Movie details from Web API">
+    <title>Movie</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+      <script>
+         
+         // construct the url with parameter values
+ 
+          
+          var deviceID    = "32001e000347343339373536";
+          var accessToken = "e3fe50ff3713e00c4becc30e2615bf20d27afe04";
+          var setFunc = "setMovie";
+          var setGenreName = "setGenre";
+
+          
+         var apikey = "s3jsgzusrz43qpeanp462p2f";
+         var baseUrl = "http://data.tmsapi.com/v1.1";
+         var showtimesUrl = baseUrl + '/movies/showings';
+         var zipCode = "14623";
+         var d = new Date();
+         var today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+          
+        function init()
+           {
+                    var xmlhttp = new XMLHttpRequest();
+                    var url = "movie.json";
+
+                    xmlhttp.onreadystatechange = function() {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            
+                            var result = JSON.parse(xmlhttp.responseText);
+                            //console.log(result[0].showtimes[0].dateTime);
+                            arrayLength = result.length;
+                            //console.log(arrayLength);
+                            var allMovieTimes = [];
+                            
+                            
+                            for(var i=0;i<arrayLength;i++)
+                                {
+                                    arrayLength2 = result[i].showtimes.length;
+                                    //console.log(arrayLength2);
+                                    
+                                    for(j=0;j<arrayLength2;j++)
+                                        {
+                                            allMovieTimes[j] = result[i].showtimes[j].dateTime;
+                                            //console.log(result[i].showtimes[j].dateTime);
+                                            //console.log(allMovieTimes[j]);
+                                            
+                                               // var myString = '2016-12-12T19:22';
+
+                                                movieTime = allMovieTimes[j].replace(/\D/g,'');
+                                              // console.log(movieTime);
+                                                var res = movieTime.substr(-4, 4);
+                                                //console.log(res);
+                                                var d = new Date();
+                                                var today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+                                                var hours = d.getHours();
+                                                var minutes = "0" + d.getMinutes();
+                                                var seconds = "0" + d.getSeconds();
+                                                var localTime = hours + minutes.substr(-2);
+                                                localTime = parseInt(localTime, 10);
+                                                movieT = parseInt(res, 10);
+                                                //console.log(localTime);
+                                               // console.log(movieT);
+                                                //console.log(result[i].title);
+                                                calcTime = movieT-localTime;
+                                           
+                                            
+                                            if(calcTime >=0 && calcTime <20)
+                                            {
+                                                console.log("It's Movie Time !");
+                                                console.log(movieT);
+                                                console.log(result[i].title);
+                                                console.log(result[i].genres);
+                                                genreLength = result[i].genres.length;
+                                                var setValue = result[i].title;
+                                                sparkSetPos(setValue);
+                                                for(var k=0;k<genreLength;k++)
+                                                    {
+                                                        if(result[i].genres[k] == "Action")
+                                                            {
+                                                                var setGenreValue = result[i].genres[k];
+                                                                sparkSetGenre(setGenreValue);
+                                                                 console.log("Action");
+                                                            }
+                                                        else if(result[i].genres[k] == "Comedy") 
+                                                            {
+                                                                 var setGenreValue = result[i].genres[k];
+                                                                sparkSetGenre(setGenreValue);
+                                                               console.log("Comedy"); 
+                                                            }
+                                                        else if(result[i].genres[k] == "Children") 
+                                                            {
+                                                                 var setGenreValue = result[i].genres[k];
+                                                                sparkSetGenre(setGenreValue);
+                                                                console.log("Family"); 
+                                                            }
+                                                        else if(result[i].genres[k] == "Horror") 
+                                                            {
+                                                                var setGenreValue = result[i].genres[k];
+                                                                sparkSetGenre(setGenreValue);
+                                                                console.log("Horror"); 
+                                                            }
+                                                        else if(result[i].genres[k] == "Romance") 
+                                                            {
+                                                                 var setGenreValue = result[i].genres[k];
+                                                                sparkSetGenre(setGenreValue);
+                                                                console.log("Romance"); 
+                                                            }
+                                                        else
+                                                            {
+                                                                console.log("unknown genre");
+                                                            }    
+                                                    }
+                                            }
+                                            else
+                                            {
+                                                //console.log("No Movie soon");
+                                            }
+                                            
+                                            /*
+                                                if(calcTime <20 && calcTime >=15)
+                                                {
+                                                    //console.log(localTime);
+                                                    //console.log(movieT);
+                                                    console.log(result[i].title);
+                                                    console.log("It's Movie Time !")
+
+                                                }    */
+                                        }
+                                            
+                                }
+                            
+                        }
+                    };
+               
+                    xmlhttp.open("GET", url, true);
+                    xmlhttp.send();
+
+            }
+          
+          
+          
+           window.onload= init;
+
+      function sparkSetPos(newValue) {
+          console.log("Sending movie name");
+	var requestURL = "https://api.spark.io/v1/devices/" +deviceID + "/" + setFunc + "/";
+        $.post( requestURL, { params: newValue, access_token: accessToken });
+      }
+          
+                    
+    function sparkSetGenre(genreValue) {
+        console.log("Genre name sent");
+	var requestURL = "https://api.spark.io/v1/devices/" +deviceID + "/" + setGenreName + "/";
+        $.post( requestURL, { params: genreValue, access_token: accessToken });
+      }
+           
+      </script>
+   </head>
+   <body>
+   </body>
+</html>
